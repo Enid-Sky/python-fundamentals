@@ -119,3 +119,41 @@ roger = Student("Roger van der Weyden", 10)
 sandro = Student("Sandro Botticelli", 12)
 pieter = Student("Pieter Bruegel the Elder", 8)
 pieter.add_grade(Grade(100))
+
+
+# Exceptions
+# Define an exception class called OutOfStock
+
+class OutOfStock(Exception):
+    pass
+
+# Create a class for a CandleShop and initiate it with stock.
+
+class CandleShop:
+    name = "Here is a hot tip buy drip candles."
+    def __init__(self, stock):
+        self.stock = stock
+
+
+    
+    # create a method for buying candles. Remove one from stock when a purchase is made. 
+
+    def buy(self, color):
+        if self.stock[color] < 1:
+            raise OutOfStock
+        else:
+            self.stock[color] = self.stock[color] - 1
+            print(self.stock)
+        
+
+# Create a class instance called candle_shop and pass in stock
+
+candle_shop = CandleShop({"blue": 6, "red": 2, "green": 0})
+candle_shop_name = CandleShop.name
+
+
+# call candle_shop and buy a blue candle
+
+candle_shop.buy("blue")
+# candle_shop.buy("green")
+print(candle_shop_name)
